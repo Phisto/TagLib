@@ -228,6 +228,7 @@
 		F4A45BD51DAF632200E10F52 /* chapterframe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A45BCB1DAF632200E10F52 /* chapterframe.cpp */; };
 		F4D23028222C286400F8EC60 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F4D23026222C286400F8EC60 /* README.md */; };
 		F4D2302B222C339D00F8EC60 /* taglib_config.h in Headers */ = {isa = PBXBuildFile; fileRef = F4D2302A222C339D00F8EC60 /* taglib_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F4D917D3222C490700D4A594 /* tlist.tcc in Resources */ = {isa = PBXBuildFile; fileRef = 3261F79311A9A0B800E08DCD /* tlist.tcc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1129,6 +1130,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D917D3222C490700D4A594 /* tlist.tcc in Resources */,
 				F496B129222C38B2004EB425 /* .gitignore in Resources */,
 				F4D23028222C286400F8EC60 /* README.md in Resources */,
 			);

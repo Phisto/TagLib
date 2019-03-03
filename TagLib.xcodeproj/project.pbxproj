@@ -227,7 +227,7 @@
 		F4A45BD41DAF632200E10F52 /* chapterframe.h in Headers */ = {isa = PBXBuildFile; fileRef = F4A45BCA1DAF632200E10F52 /* chapterframe.h */; };
 		F4A45BD51DAF632200E10F52 /* chapterframe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A45BCB1DAF632200E10F52 /* chapterframe.cpp */; };
 		F4D23028222C286400F8EC60 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F4D23026222C286400F8EC60 /* README.md */; };
-		F4D2302B222C339D00F8EC60 /* taglib_config.h in Headers */ = {isa = PBXBuildFile; fileRef = F4D2302A222C339D00F8EC60 /* taglib_config.h */; };
+		F4D2302B222C339D00F8EC60 /* taglib_config.h in Headers */ = {isa = PBXBuildFile; fileRef = F4D2302A222C339D00F8EC60 /* taglib_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1035,7 +1035,6 @@
 				3261F92311A9A0B800E08DCD /* trueaudioproperties.h in Headers */,
 				3261F92711A9A0B800E08DCD /* wavpackfile.h in Headers */,
 				3261F92911A9A0B800E08DCD /* wavpackproperties.h in Headers */,
-				F4D2302B222C339D00F8EC60 /* taglib_config.h in Headers */,
 				320412E71222C75E00E481BA /* flacpicture.h in Headers */,
 				320412F61222C7AE00E481BA /* apefile.h in Headers */,
 				320412F81222C7AE00E481BA /* apeproperties.h in Headers */,
@@ -1047,6 +1046,7 @@
 				32B7987D138DB1AA00EBEF1B /* tfilestream.h in Headers */,
 				32B7987F138DB1AA00EBEF1B /* tiostream.h in Headers */,
 				F4A45BD41DAF632200E10F52 /* chapterframe.h in Headers */,
+				F4D2302B222C339D00F8EC60 /* taglib_config.h in Headers */,
 				32AEF5EC13EDD0E20062FEF7 /* itfile.h in Headers */,
 				32AEF5EE13EDD0E20062FEF7 /* itproperties.h in Headers */,
 				32AEF5F013EDD0E20062FEF7 /* modfile.h in Headers */,

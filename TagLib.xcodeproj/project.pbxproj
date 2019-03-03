@@ -485,8 +485,7 @@
 		0867D691FE84028FC02AAC07 /* taglib */ = {
 			isa = PBXGroup;
 			children = (
-				3270FB851322FFCA00B661DB /* config.h */,
-				F4D2302A222C339D00F8EC60 /* taglib_config.h */,
+				F496B12A222C39D3004EB425 /* taglib-config */,
 				3261F64511A9A0B700E08DCD /* taglib-src */,
 				089C1665FE841158C02AAC07 /* Resources */,
 				034768DFFF38A50411DB9C8B /* Products */,
@@ -932,6 +931,15 @@
 				F447864E1DA3BDAE009B4E15 /* libz.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F496B12A222C39D3004EB425 /* taglib-config */ = {
+			isa = PBXGroup;
+			children = (
+				3270FB851322FFCA00B661DB /* config.h */,
+				F4D2302A222C339D00F8EC60 /* taglib_config.h */,
+			);
+			path = "taglib-config";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

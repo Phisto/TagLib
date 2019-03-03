@@ -36,6 +36,10 @@ You only need to build and add the TagLib framework (TagLib.framework) to your p
 See the online  [API documentation ](https://taglib.org/api/) of the TagLib project.
 
 
+## Updating
+
+To update to the newest TagLib version download the lates source from [taglib.org](https://taglib.org/), and replace the taglib-src folder in the project with the one in the downloaded source folder.
+
 ## License
 
 TagLib is released under the [GNU Lesser General Public License (LGPL)](https://www.gnu.org/licenses/). 

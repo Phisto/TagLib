@@ -77,7 +77,10 @@ public:
     if(autoDelete) {
       typename std::list<TP *>::const_iterator it = list.begin();
       for(; it != list.end(); ++it)
-        delete *it;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything"
+      delete *it;
+#pragma clang diagnostic pop
     }
     list.clear();
   }

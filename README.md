@@ -24,11 +24,10 @@ It is slightly tuned to address some XCode warnings and uses the project setting
 github "Phisto/TagLib" ~> 1.0
 ```
 
-
 ### Manually
 
 If you prefer not to use Carthage, you can integrate TagLib into your project manually.
-You only need to build and add the TagLib framework (TagLib.framework) to your project. 
+You need to build and add the TagLib framework (TagLib.framework) to your project yourself. 
 
 
 ## Usage
@@ -39,6 +38,7 @@ See the online  [API documentation ](https://taglib.org/api/) of the TagLib proj
 ## Updating
 
 To update to the newest TagLib version download the lates source from [taglib.org](https://taglib.org/), and replace the taglib-src folder in the project with the one in the downloaded source folder.
+
 
 ## License
 

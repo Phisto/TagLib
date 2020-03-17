@@ -202,6 +202,7 @@
 		3DAAA942169AEB60005253B6 /* opusfile.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAAA93E169AEB60005253B6 /* opusfile.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3DAAA943169AEB60005253B6 /* opusproperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DAAA93F169AEB60005253B6 /* opusproperties.cpp */; };
 		3DAAA944169AEB60005253B6 /* opusproperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAAA940169AEB60005253B6 /* opusproperties.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		4AF28CC3242065C300D6B96B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4AF28CC2242065C300D6B96B /* LICENSE */; };
 		F447864F1DA3BDAE009B4E15 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F447864E1DA3BDAE009B4E15 /* libz.tbd */; };
 		F496B129222C38B2004EB425 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F496B128222C38B2004EB425 /* .gitignore */; };
 		F4A45BAB1DAF611900E10F52 /* trefcounter.h in Headers */ = {isa = PBXBuildFile; fileRef = F4A45BAA1DAF611900E10F52 /* trefcounter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -433,6 +434,7 @@
 		3DAAA93E169AEB60005253B6 /* opusfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opusfile.h; sourceTree = "<group>"; };
 		3DAAA93F169AEB60005253B6 /* opusproperties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = opusproperties.cpp; sourceTree = "<group>"; };
 		3DAAA940169AEB60005253B6 /* opusproperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opusproperties.h; sourceTree = "<group>"; };
+		4AF28CC2242065C300D6B96B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* TagLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TagLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F447864E1DA3BDAE009B4E15 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -488,21 +490,14 @@
 			children = (
 				F496B12A222C39D3004EB425 /* taglib-config */,
 				3261F64511A9A0B700E08DCD /* taglib-src */,
-				089C1665FE841158C02AAC07 /* Resources */,
+				8DC2EF5A0486A6940098B216 /* Info.plist */,
+				F4D23026222C286400F8EC60 /* README.md */,
+				4AF28CC2242065C300D6B96B /* LICENSE */,
+				F496B128222C38B2004EB425 /* .gitignore */,
 				F447864B1DA3BD69009B4E15 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
-				F4D23026222C286400F8EC60 /* README.md */,
-				F496B128222C38B2004EB425 /* .gitignore */,
 			);
 			name = taglib;
-			sourceTree = "<group>";
-		};
-		089C1665FE841158C02AAC07 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8DC2EF5A0486A6940098B216 /* Info.plist */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		3261F64511A9A0B700E08DCD /* taglib-src */ = {
@@ -1132,6 +1127,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF28CC3242065C300D6B96B /* LICENSE in Resources */,
 				F496B129222C38B2004EB425 /* .gitignore in Resources */,
 				F4D23028222C286400F8EC60 /* README.md in Resources */,
 			);

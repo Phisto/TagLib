@@ -203,6 +203,7 @@
 		3DAAA943169AEB60005253B6 /* opusproperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DAAA93F169AEB60005253B6 /* opusproperties.cpp */; };
 		3DAAA944169AEB60005253B6 /* opusproperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAAA940169AEB60005253B6 /* opusproperties.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4AF28CC3242065C300D6B96B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4AF28CC2242065C300D6B96B /* LICENSE */; };
+		4AF28CC92420759A00D6B96B /* TagLibUmbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AF28CC82420759A00D6B96B /* TagLibUmbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F447864F1DA3BDAE009B4E15 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F447864E1DA3BDAE009B4E15 /* libz.tbd */; };
 		F496B129222C38B2004EB425 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F496B128222C38B2004EB425 /* .gitignore */; };
 		F4A45BAB1DAF611900E10F52 /* trefcounter.h in Headers */ = {isa = PBXBuildFile; fileRef = F4A45BAA1DAF611900E10F52 /* trefcounter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -435,6 +436,8 @@
 		3DAAA93F169AEB60005253B6 /* opusproperties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = opusproperties.cpp; sourceTree = "<group>"; };
 		3DAAA940169AEB60005253B6 /* opusproperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opusproperties.h; sourceTree = "<group>"; };
 		4AF28CC2242065C300D6B96B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		4AF28CC82420759A00D6B96B /* TagLibUmbrella.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagLibUmbrella.h; sourceTree = "<group>"; };
+		4AF28CCA242076A500D6B96B /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* TagLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TagLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F447864E1DA3BDAE009B4E15 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -488,10 +491,11 @@
 		0867D691FE84028FC02AAC07 /* taglib */ = {
 			isa = PBXGroup;
 			children = (
-				3261F78911A9A0B700E08DCD /* taglib.h */,
+				4AF28CC82420759A00D6B96B /* TagLibUmbrella.h */,
 				F496B12A222C39D3004EB425 /* taglib-config */,
 				3261F64511A9A0B700E08DCD /* taglib-src */,
 				8DC2EF5A0486A6940098B216 /* Info.plist */,
+				4AF28CCA242076A500D6B96B /* module.modulemap */,
 				F4D23026222C286400F8EC60 /* README.md */,
 				4AF28CC2242065C300D6B96B /* LICENSE */,
 				F496B128222C38B2004EB425 /* .gitignore */,
@@ -802,6 +806,7 @@
 		3261F78611A9A0B700E08DCD /* toolkit */ = {
 			isa = PBXGroup;
 			children = (
+				3261F78911A9A0B700E08DCD /* taglib.h */,
 				F4A45BAC1DAF612800E10F52 /* tzlib.h */,
 				F4A45BAD1DAF612800E10F52 /* tzlib.cpp */,
 				F4A45BAE1DAF612800E10F52 /* tutils.h */,
@@ -1058,6 +1063,7 @@
 				32AEF5FB13EDD0E20062FEF7 /* s3mproperties.h in Headers */,
 				32AEF60213EDD1090062FEF7 /* xmfile.h in Headers */,
 				32AEF60413EDD1090062FEF7 /* xmproperties.h in Headers */,
+				4AF28CC92420759A00D6B96B /* TagLibUmbrella.h in Headers */,
 				32E92DC11613E46C00917F63 /* ownershipframe.h in Headers */,
 				32E92DC51613E4A800917F63 /* tpropertymap.h in Headers */,
 				3226274B16265E100041896F /* infotag.h in Headers */,
@@ -1297,6 +1303,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MARKETING_VERSION = 1.11.1;
+				MODULEMAP_FILE = module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.taglib;
 				PRODUCT_NAME = TagLib;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1335,6 +1342,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MARKETING_VERSION = 1.11.1;
+				MODULEMAP_FILE = module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.taglib;
 				PRODUCT_NAME = TagLib;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1377,6 +1385,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
@@ -1413,6 +1422,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 			};
 			name = Release;

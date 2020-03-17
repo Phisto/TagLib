@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8DC2EF4F0486A6940098B216"
                BuildableName = "TagLib.framework"
-               BlueprintName = "TagLib"
+               BlueprintName = "TagLib macOS"
                ReferencedContainer = "container:TagLib.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,7 +45,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DC2EF4F0486A6940098B216"
             BuildableName = "TagLib.framework"
-            BlueprintName = "TagLib"
+            BlueprintName = "TagLib macOS"
             ReferencedContainer = "container:TagLib.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -61,7 +61,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8DC2EF4F0486A6940098B216"
             BuildableName = "TagLib.framework"
-            BlueprintName = "TagLib"
+            BlueprintName = "TagLib macOS"
             ReferencedContainer = "container:TagLib.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -40,6 +40,7 @@
 #include "frames/commentsframe.h"
 #include "frames/uniquefileidentifierframe.h"
 #include "frames/unknownframe.h"
+#include "frames/podcastframe.h"
 
 using namespace TagLib;
 using namespace ID3v2;
@@ -111,8 +112,8 @@ Frame *Frame::createTextualFrame(const String &key, const StringList &values) //
   // check if the key is contained in the key<=>frameID mapping
   ByteVector frameID = keyToFrameID(key);
   if(!frameID.isEmpty()) {
-    // Apple proprietary WFED (Podcast URL) is in fact a text frame.
-    if(frameID[0] == 'T' || frameID == "WFED"){ // text frame
+    // Apple proprietary WFED (Podcast URL), MVNM (Movement Name), MVIN (Movement Number), GRP1 (Grouping) are in fact text frames.
+    if(frameID[0] == 'T' || frameID == "WFED" || frameID == "MVNM" || frameID == "MVIN" || frameID == "GRP1"){ // text frame
       TextIdentificationFrame *frame = new TextIdentificationFrame(frameID, String::UTF8);
       frame->setText(values);
       return frame;
@@ -120,6 +121,8 @@ Frame *Frame::createTextualFrame(const String &key, const StringList &values) //
         UrlLinkFrame* frame = new UrlLinkFrame(frameID);
         frame->setUrl(values.front());
         return frame;
+    } else if(frameID == "PCST") {
+      return new PodcastFrame();
     }
   }
   if(key == "MUSICBRAINZ_TRACKID" && values.size() == 1) {
@@ -198,15 +201,15 @@ ByteVector Frame::render() const
 // protected members
 ////////////////////////////////////////////////////////////////////////////////
 
-Frame::Frame(const ByteVector &data)
+Frame::Frame(const ByteVector &data) :
+  d(new FramePrivate())
 {
-  d = new FramePrivate;
   d->header = new Header(data);
 }
 
-Frame::Frame(Header *h)
+Frame::Frame(Header *h) :
+  d(new FramePrivate())
 {
-  d = new FramePrivate;
   d->header = h;
 }
 
@@ -344,7 +347,7 @@ namespace
     { "TEXT", "LYRICIST" },
     { "TFLT", "FILETYPE" },
     //{ "TIPL", "INVOLVEDPEOPLE" }, handled separately
-    { "TIT1", "CONTENTGROUP" },
+    { "TIT1", "CONTENTGROUP" }, // 'Work' in iTunes
     { "TIT2", "TITLE"},
     { "TIT3", "SUBTITLE" },
     { "TKEY", "INITIALKEY" },
@@ -369,6 +372,7 @@ namespace
     { "TRSN", "RADIOSTATION" },
     { "TRSO", "RADIOSTATIONOWNER" },
     { "TSOA", "ALBUMSORT" },
+    { "TSOC", "COMPOSERSORT" },
     { "TSOP", "ARTISTSORT" },
     { "TSOT", "TITLESORT" },
     { "TSO2", "ALBUMARTISTSORT" }, // non-standard, used by iTunes
@@ -392,6 +396,9 @@ namespace
     { "TDES", "PODCASTDESC" },
     { "TGID", "PODCASTID" },
     { "WFED", "PODCASTURL" },
+    { "MVNM", "MOVEMENTNAME" },
+    { "MVIN", "MOVEMENTNUMBER" },
+    { "GRP1", "GROUPING" },
   };
   const size_t frameTranslationSize = sizeof(frameTranslation) / sizeof(frameTranslation[0]);
 
@@ -399,7 +406,11 @@ namespace
     { "MUSICBRAINZ ALBUM ID",         "MUSICBRAINZ_ALBUMID" },
     { "MUSICBRAINZ ARTIST ID",        "MUSICBRAINZ_ARTISTID" },
     { "MUSICBRAINZ ALBUM ARTIST ID",  "MUSICBRAINZ_ALBUMARTISTID" },
+    { "MUSICBRAINZ ALBUM RELEASE COUNTRY", "RELEASECOUNTRY" },
+    { "MUSICBRAINZ ALBUM STATUS", "RELEASESTATUS" },
+    { "MUSICBRAINZ ALBUM TYPE", "RELEASETYPE" },
     { "MUSICBRAINZ RELEASE GROUP ID", "MUSICBRAINZ_RELEASEGROUPID" },
+    { "MUSICBRAINZ RELEASE TRACK ID", "MUSICBRAINZ_RELEASETRACKID" },
     { "MUSICBRAINZ WORK ID",          "MUSICBRAINZ_WORKID" },
     { "ACOUSTID ID",                  "ACOUSTID_ID" },
     { "ACOUSTID FINGERPRINT",         "ACOUSTID_FINGERPRINT" },
@@ -414,7 +425,7 @@ namespace
     {"TYER", "TDRC"}, // 2.3 -> 2.4
     {"TIME", "TDRC"}, // 2.3 -> 2.4
   };
-  const size_t deprecatedFramesSize = sizeof(deprecatedFrames) / sizeof(deprecatedFrames[0]);;
+  const size_t deprecatedFramesSize = sizeof(deprecatedFrames) / sizeof(deprecatedFrames[0]);
 }
 
 String Frame::frameIDToKey(const ByteVector &id)
@@ -474,8 +485,8 @@ PropertyMap Frame::asProperties() const
   // workaround until this function is virtual
   if(id == "TXXX")
     return dynamic_cast< const UserTextIdentificationFrame* >(this)->asProperties();
-  // Apple proprietary WFED (Podcast URL) is in fact a text frame.
-  else if(id[0] == 'T' || id == "WFED")
+  // Apple proprietary WFED (Podcast URL), MVNM (Movement Name), MVIN (Movement Number), GRP1 (Grouping) are in fact text frames.
+  else if(id[0] == 'T' || id == "WFED" || id == "MVNM" || id == "MVIN" || id == "GRP1")
     return dynamic_cast< const TextIdentificationFrame* >(this)->asProperties();
   else if(id == "WXXX")
     return dynamic_cast< const UserUrlLinkFrame* >(this)->asProperties();
@@ -487,6 +498,8 @@ PropertyMap Frame::asProperties() const
     return dynamic_cast< const UnsynchronizedLyricsFrame* >(this)->asProperties();
   else if(id == "UFID")
     return dynamic_cast< const UniqueFileIdentifierFrame* >(this)->asProperties();
+  else if(id == "PCST")
+    return dynamic_cast< const PodcastFrame* >(this)->asProperties();
   PropertyMap m;
   m.unsupportedData().append(id);
   return m;
@@ -571,15 +584,15 @@ unsigned int Frame::Header::size(unsigned int version)
 // public members (Frame::Header)
 ////////////////////////////////////////////////////////////////////////////////
 
-Frame::Header::Header(const ByteVector &data, bool synchSafeInts)
+Frame::Header::Header(const ByteVector &data, bool synchSafeInts) :
+  d(new HeaderPrivate())
 {
-  d = new HeaderPrivate;
   setData(data, synchSafeInts);
 }
 
-Frame::Header::Header(const ByteVector &data, unsigned int version)
+Frame::Header::Header(const ByteVector &data, unsigned int version) :
+  d(new HeaderPrivate())
 {
-  d = new HeaderPrivate;
   setData(data, version);
 }
 

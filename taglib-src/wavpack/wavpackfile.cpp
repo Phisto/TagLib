@@ -72,6 +72,18 @@ public:
 };
 
 ////////////////////////////////////////////////////////////////////////////////
+// static members
+////////////////////////////////////////////////////////////////////////////////
+
+bool WavPack::File::isSupported(IOStream *stream)
+{
+  // A WavPack file has to start with "wvpk".
+
+  const ByteVector id = Utils::readHeader(stream, 4, false);
+  return (id == "wvpk");
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // public members
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -251,7 +263,7 @@ void WavPack::File::read(bool readProperties)
     d->APELocation = d->APELocation + APE::Footer::size() - d->APESize;
   }
 
-  if(d->ID3v1Location >= 0)
+  if(d->ID3v1Location < 0)
     APETag(true);
 
   // Look for WavPack audio properties

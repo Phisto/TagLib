@@ -36,7 +36,9 @@ class TableOfContentsFrame::TableOfContentsFramePrivate
 {
 public:
   TableOfContentsFramePrivate() :
-    tagHeader(0)
+    tagHeader(0),
+    isTopLevel(false),
+    isOrdered(false)
   {
     embeddedFrameList.setAutoDelete(true);
   }
@@ -53,7 +55,7 @@ public:
 namespace {
 
   // These functions are needed to try to aim for backward compatibility with
-  // an API that previously (unreasonably) required null bytes to be appeneded
+  // an API that previously (unreasonably) required null bytes to be appended
   // at the end of identifiers explicitly by the API user.
 
   // BIC: remove these
@@ -80,9 +82,9 @@ namespace {
 ////////////////////////////////////////////////////////////////////////////////
 
 TableOfContentsFrame::TableOfContentsFrame(const ID3v2::Header *tagHeader, const ByteVector &data) :
-    ID3v2::Frame(data)
+  ID3v2::Frame(data),
+  d(new TableOfContentsFramePrivate())
 {
-  d = new TableOfContentsFramePrivate;
   d->tagHeader = tagHeader;
   setData(data);
 }
@@ -90,9 +92,9 @@ TableOfContentsFrame::TableOfContentsFrame(const ID3v2::Header *tagHeader, const
 TableOfContentsFrame::TableOfContentsFrame(const ByteVector &elementID,
                                            const ByteVectorList &children,
                                            const FrameList &embeddedFrames) :
-    ID3v2::Frame("CTOC")
+  ID3v2::Frame("CTOC"),
+  d(new TableOfContentsFramePrivate())
 {
-  d = new TableOfContentsFramePrivate;
   d->elementID = elementID;
   strip(d->elementID);
   d->childElements = children;
@@ -166,7 +168,8 @@ void TableOfContentsFrame::removeChildElement(const ByteVector &cE)
   if(it == d->childElements.end())
     it = d->childElements.find(cE + ByteVector("\0"));
 
-  d->childElements.erase(it);
+  if(it != d->childElements.end())
+    d->childElements.erase(it);
 }
 
 const FrameListMap &TableOfContentsFrame::embeddedFrameListMap() const
@@ -194,11 +197,14 @@ void TableOfContentsFrame::removeEmbeddedFrame(Frame *frame, bool del)
 {
   // remove the frame from the frame list
   FrameList::Iterator it = d->embeddedFrameList.find(frame);
-  d->embeddedFrameList.erase(it);
+  if(it != d->embeddedFrameList.end())
+    d->embeddedFrameList.erase(it);
 
   // ...and from the frame list map
-  it = d->embeddedFrameListMap[frame->frameID()].find(frame);
-  d->embeddedFrameListMap[frame->frameID()].erase(it);
+  FrameList &mappedList = d->embeddedFrameListMap[frame->frameID()];
+  it = mappedList.find(frame);
+  if(it != mappedList.end())
+    mappedList.erase(it);
 
   // ...and delete as desired
   if(del)
@@ -214,7 +220,23 @@ void TableOfContentsFrame::removeEmbeddedFrames(const ByteVector &id)
 
 String TableOfContentsFrame::toString() const
 {
-  return String();
+  String s = String(d->elementID) +
+             ": top level: " + (d->isTopLevel ? "true" : "false") +
+             ", ordered: " + (d->isOrdered ? "true" : "false");
+
+  if(!d->childElements.isEmpty()) {
+    s+= ", chapters: [ " + String(d->childElements.toByteVector(", ")) + " ]";
+  }
+
+  if(!d->embeddedFrameList.isEmpty()) {
+    StringList frameIDs;
+    for(FrameList::ConstIterator it = d->embeddedFrameList.begin();
+        it != d->embeddedFrameList.end(); ++it)
+      frameIDs.append((*it)->frameID());
+    s += ", sub-frames: [ " + frameIDs.toString(", ") + " ]";
+  }
+
+  return s;
 }
 
 PropertyMap TableOfContentsFrame::asProperties() const
@@ -286,7 +308,7 @@ void TableOfContentsFrame::parseFields(const ByteVector &data)
     return;
 
   while(embPos < size - header()->size()) {
-    Frame *frame = FrameFactory::instance()->createFrame(data.mid(pos + embPos), (d->tagHeader != 0));
+    Frame *frame = FrameFactory::instance()->createFrame(data.mid(pos + embPos), d->tagHeader);
 
     if(!frame)
       return;
@@ -330,9 +352,9 @@ ByteVector TableOfContentsFrame::renderFields() const
 
 TableOfContentsFrame::TableOfContentsFrame(const ID3v2::Header *tagHeader,
                                            const ByteVector &data, Header *h) :
-  Frame(h)
+  Frame(h),
+  d(new TableOfContentsFramePrivate())
 {
-  d = new TableOfContentsFramePrivate;
   d->tagHeader = tagHeader;
   parseFields(fieldData(data));
 }

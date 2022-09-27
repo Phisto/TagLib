@@ -3,7 +3,7 @@
 
 ## Overview
 
-This is a mirror of the [TagLib](https://taglib.org/) 1.11.1 source and will build a dynamic framework for macOS.
+This is a mirror of the [TagLib](https://taglib.org/) 1.12 source and will build a dynamic framework for macOS.
 
 It is slightly tuned to address some XCode warnings and uses the project settings recommended by XCode.
 
@@ -11,7 +11,7 @@ It is slightly tuned to address some XCode warnings and uses the project setting
 ## Requirements
 
 - macOS 10.10+
-- Xcode 10.1+
+- Xcode 14.0.1+
 
 
 ## Installation

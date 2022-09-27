@@ -202,6 +202,9 @@
 		3DAAA942169AEB60005253B6 /* opusfile.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAAA93E169AEB60005253B6 /* opusfile.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3DAAA943169AEB60005253B6 /* opusproperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DAAA93F169AEB60005253B6 /* opusproperties.cpp */; };
 		3DAAA944169AEB60005253B6 /* opusproperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAAA940169AEB60005253B6 /* opusproperties.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		4A53338328E3A9B00060AB58 /* id3v2.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A53338228E3A9B00060AB58 /* id3v2.h */; };
+		4A53338A28E3ABDE0060AB58 /* core.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A53338828E3ABDE0060AB58 /* core.h */; };
+		4A53338B28E3ABDE0060AB58 /* checked.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A53338928E3ABDE0060AB58 /* checked.h */; };
 		4AF28CC3242065C300D6B96B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4AF28CC2242065C300D6B96B /* LICENSE */; };
 		4AF28CC92420759A00D6B96B /* TagLibUmbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AF28CC82420759A00D6B96B /* TagLibUmbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F447864F1DA3BDAE009B4E15 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F447864E1DA3BDAE009B4E15 /* libz.tbd */; };
@@ -435,6 +438,9 @@
 		3DAAA93E169AEB60005253B6 /* opusfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opusfile.h; sourceTree = "<group>"; };
 		3DAAA93F169AEB60005253B6 /* opusproperties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = opusproperties.cpp; sourceTree = "<group>"; };
 		3DAAA940169AEB60005253B6 /* opusproperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opusproperties.h; sourceTree = "<group>"; };
+		4A53338228E3A9B00060AB58 /* id3v2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = id3v2.h; sourceTree = "<group>"; };
+		4A53338828E3ABDE0060AB58 /* core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core.h; sourceTree = "<group>"; };
+		4A53338928E3ABDE0060AB58 /* checked.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checked.h; sourceTree = "<group>"; };
 		4AF28CC2242065C300D6B96B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4AF28CC82420759A00D6B96B /* TagLibUmbrella.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagLibUmbrella.h; sourceTree = "<group>"; };
 		4AF28CCA242076A500D6B96B /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
@@ -532,6 +538,7 @@
 				3261F78411A9A0B700E08DCD /* tagunion.cpp */,
 				3261F78511A9A0B700E08DCD /* tagunion.h */,
 				3261F78611A9A0B700E08DCD /* toolkit */,
+				4A53338728E3ABDE0060AB58 /* utf8-cpp */,
 				3261F79C11A9A0B800E08DCD /* trueaudio */,
 				3261F7A311A9A0B800E08DCD /* wavpack */,
 			);
@@ -658,6 +665,7 @@
 				3261F73211A9A0B700E08DCD /* id3v2.3.0.txt */,
 				3261F73311A9A0B700E08DCD /* id3v2.4.0-frames.txt */,
 				3261F73411A9A0B700E08DCD /* id3v2.4.0-structure.txt */,
+				4A53338228E3A9B00060AB58 /* id3v2.h */,
 				3261F73511A9A0B700E08DCD /* id3v2extendedheader.cpp */,
 				3261F73611A9A0B700E08DCD /* id3v2extendedheader.h */,
 				3261F73711A9A0B700E08DCD /* id3v2footer.cpp */,
@@ -926,6 +934,15 @@
 			path = opus;
 			sourceTree = "<group>";
 		};
+		4A53338728E3ABDE0060AB58 /* utf8-cpp */ = {
+			isa = PBXGroup;
+			children = (
+				4A53338828E3ABDE0060AB58 /* core.h */,
+				4A53338928E3ABDE0060AB58 /* checked.h */,
+			);
+			path = "utf8-cpp";
+			sourceTree = "<group>";
+		};
 		F447864B1DA3BD69009B4E15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -956,6 +973,7 @@
 				3261F86E11A9A0B800E08DCD /* apetag.h in Headers */,
 				3261F87211A9A0B800E08DCD /* asfattribute.h in Headers */,
 				3261F87411A9A0B800E08DCD /* asffile.h in Headers */,
+				4A53338B28E3ABDE0060AB58 /* checked.h in Headers */,
 				3261F87611A9A0B800E08DCD /* asfproperties.h in Headers */,
 				3261F87811A9A0B800E08DCD /* asftag.h in Headers */,
 				3261F87C11A9A0B800E08DCD /* audioproperties.h in Headers */,
@@ -970,6 +988,7 @@
 				3261F89411A9A0B800E08DCD /* mp4tag.h in Headers */,
 				3261F89811A9A0B800E08DCD /* mpcfile.h in Headers */,
 				3261F89A11A9A0B800E08DCD /* mpcproperties.h in Headers */,
+				4A53338A28E3ABDE0060AB58 /* core.h in Headers */,
 				3261F89E11A9A0B800E08DCD /* id3v1genres.h in Headers */,
 				3261F8A011A9A0B800E08DCD /* id3v1tag.h in Headers */,
 				3261F8A411A9A0B800E08DCD /* attachedpictureframe.h in Headers */,
@@ -1017,6 +1036,7 @@
 				3261F91111A9A0B800E08DCD /* tdebug.h in Headers */,
 				F4D917D4222C49C300D4A594 /* tlist.tcc in Headers */,
 				3261F91311A9A0B800E08DCD /* tfile.h in Headers */,
+				4A53338328E3A9B00060AB58 /* id3v2.h in Headers */,
 				3261F91411A9A0B800E08DCD /* tlist.h in Headers */,
 				3261F91611A9A0B800E08DCD /* tmap.h in Headers */,
 				3261F91911A9A0B800E08DCD /* tstring.h in Headers */,

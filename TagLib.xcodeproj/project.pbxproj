@@ -202,7 +202,7 @@
 		3DAAA942169AEB60005253B6 /* opusfile.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAAA93E169AEB60005253B6 /* opusfile.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3DAAA943169AEB60005253B6 /* opusproperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DAAA93F169AEB60005253B6 /* opusproperties.cpp */; };
 		3DAAA944169AEB60005253B6 /* opusproperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAAA940169AEB60005253B6 /* opusproperties.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		4A53338328E3A9B00060AB58 /* id3v2.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A53338228E3A9B00060AB58 /* id3v2.h */; };
+		4A53338328E3A9B00060AB58 /* id3v2.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A53338228E3A9B00060AB58 /* id3v2.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4A53338A28E3ABDE0060AB58 /* core.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A53338828E3ABDE0060AB58 /* core.h */; };
 		4A53338B28E3ABDE0060AB58 /* checked.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A53338928E3ABDE0060AB58 /* checked.h */; };
 		4AF28CC3242065C300D6B96B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4AF28CC2242065C300D6B96B /* LICENSE */; };
